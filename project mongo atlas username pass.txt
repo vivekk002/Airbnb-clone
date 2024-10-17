@@ -1,0 +1,6 @@
+username  : vivekkumarjnv054
+password : 0TbuqPGSHuuBNemj
+
+mongodb+srv://vivekkumarjnv054:<db_password>@cluster0.wvgsb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+mongodb+srv://vivekkumarjnv054:0TbuqPGSHuuBNemj@cluster0.wvgsb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

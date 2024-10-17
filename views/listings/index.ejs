@@ -1,0 +1,137 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  .filter {
+    margin-right: 2rem;
+    text-align: center;
+    opacity: 0.7;
+  }
+  .filter:hover {
+    opacity: 1;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  #toggle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.5rem;
+    padding: 1rem;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 4rem;
+  }
+  .tax-info {
+    display: none;
+  }
+</style>
+<div id="filters">
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Pool</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Room</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-igloo"></i></div>
+    <p>ice</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-fire"></i></div>
+    <p>Trending</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Pool</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Room</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-igloo"></i></div>
+    <p>ice</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Room</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-igloo"></i></div>
+    <p>ice</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-igloo"></i></div>
+    <p>ice</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-bed"></i></div>
+    <p>Room</p>
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-igloo"></i></div>
+    <p>ice</p>
+  </div>
+  <div id="toggle">
+    <div class="form-check form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label-reverse" for="flexSwitchCheckDefault"
+        >Default switch checkbox input</label
+      >
+    </div>
+  </div>
+</div>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-2">
+  <% for(let listing of allListings){%>
+  <a href="/listings/<%= listing._id %>" class="listing-link">
+    <div class="card listing-card">
+      <img
+        src="<%= listing.image.url %>"
+        class="card-img-top"
+        alt="listing-image"
+        style="height: 20rem"
+      />
+      <div class="card-img-overlay"></div>
+      <div class="card-body">
+        <p class="card-text">
+          <b><%= listing.title %></b><br />Price: <%=
+          listing.price.toLocaleString("en-IN") %>/night
+          <i class="tax-info">&nbsp;&nbsp; +18%-GST</i>
+        </p>
+      </div>
+    </div>
+    <br /><br />
+  </a>
+  <% }%>
+</div>
+
+<script>
+  let toggler = document.getElementById("flexSwitchCheckDefault");
+  toggler.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script>
