@@ -1,4 +1,5 @@
 <% layout("/layouts/boilerplate") %>
+<style></style>
 <div class="row mt-3">
   <div class="col-8 offset-2">
     <h3 class="headtitle">Create New Listing</h3>
@@ -9,15 +10,40 @@
       class="row g-3 needs-validation"
       enctype="multipart/form-data"
     >
-      <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input
-          name="newListing[title]"
-          type="text"
-          class="form-control"
-          required
-        />
-        <div class="invalid-feedback">please enter your title</div>
+      <div class="row">
+        <div class="mb-3 col-md-8">
+          <label for="title" class="form-label">Title</label>
+          <input
+            name="newListing[title]"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">please enter your title</div>
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="category" class="form-label">Category</label>
+          <div
+            class="dropdown form-control"
+            name="newListing[category]"
+            id="dropdown"
+          >
+            <span id="selectedItem">Select</span>
+            <div class="options">
+              <!-- Radio buttons with labels -->
+              <input type="radio" id="option1" name="desert" value="desert" />
+              <label for="option1">Desert</label>
+
+              <input type="radio" id="option2" name="snow" value="snow" />
+              <label for="option2">Snow</label>
+
+              <input type="radio" id="option3" name="field" value="field" />
+              <label for="option3">Field</label>
+              <input type="radio" id="option3" name="forest" value="forest" />
+              <label for="option3">Forest</label>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
@@ -74,3 +100,29 @@
 </div>
 
 <script src="/public/js/script.js"></script>
+<script>
+  // Get references to dropdown elements
+  const dropdown = document.getElementById("dropdown");
+  const selectedItem = document.getElementById("selectedItem");
+  const options = document.querySelectorAll('.options input[type="radio"]');
+
+  // Toggle dropdown visibility on click
+  dropdown.addEventListener("click", function () {
+    dropdown.classList.toggle("active");
+  });
+
+  // Update the displayed selected item and close dropdown
+  options.forEach((option) => {
+    option.addEventListener("change", function () {
+      selectedItem.textContent = this.value;
+      dropdown.classList.remove("active");
+    });
+  });
+
+  // Close the dropdown if clicked outside
+  document.addEventListener("click", function (event) {
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove("active");
+    }
+  });
+</script>

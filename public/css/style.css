@@ -129,3 +129,57 @@ body {
   height: 400px;
   width: 80vh;
 }
+
+/* dropdown */
+/* Basic styling for the dropdown */
+.dropdown {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 10px;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Hide the actual radio buttons */
+.dropdown input[type="radio"] {
+  display: none;
+}
+
+/* Styling the displayed label (selected item) */
+.dropdown label {
+  display: block;
+  padding: 5px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+/* Hidden options container */
+.options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 10;
+}
+
+/* Styling for options */
+.options label {
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.options label:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show the options when the dropdown is active */
+.dropdown.active .options {
+  display: block;
+}
